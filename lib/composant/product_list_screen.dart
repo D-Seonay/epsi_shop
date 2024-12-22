@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import '../providers/cart_provider.dart';
 import '../composant/product_card.dart';
 import '../page/detail_article_page.dart';
+import '../composant/navbar.dart';
 
 class ProductListScreen extends StatefulWidget {
   const ProductListScreen({super.key});
@@ -38,39 +39,6 @@ class _ProductListScreenState extends State<ProductListScreen> {
     }
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Epsi Shop'),
-        actions: [
-          Stack(
-            children: [
-              IconButton(
-                icon: const Icon(Icons.shopping_cart),
-                onPressed: () {
-                  Navigator.pushNamed(context, '/cart');
-                },
-              ),
-              Consumer<CartProvider>(
-                builder: (context, cartProvider, child) {
-                  return cartProvider.cartItems.isNotEmpty
-                      ? Positioned(
-                          right: 8,
-                          top: 8,
-                          child: CircleAvatar(
-                            radius: 10,
-                            backgroundColor: Colors.red,
-                            child: Text(
-                              '${cartProvider.cartItems.length}',
-                              style: const TextStyle(fontSize: 12, color: Colors.white),
-                            ),
-                          ),
-                        )
-                      : const SizedBox.shrink();
-                },
-              ),
-            ],
-          ),
-        ],
-      ),
       body: FutureBuilder<List<dynamic>>(
         future: fetchProducts(),
         builder: (context, snapshot) {

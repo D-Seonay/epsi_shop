@@ -22,8 +22,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       routerDelegate: appRouter.routerDelegate,
       routeInformationParser: appRouter.routeInformationParser,
-      routeInformationProvider: appRouter.routeInformationProvider, // Ajouté
-      title: 'Epsi Shop',
+      routeInformationProvider: appRouter.routeInformationProvider,
+      title: 'Epsi Shop Mathéo DELAUNAY',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,

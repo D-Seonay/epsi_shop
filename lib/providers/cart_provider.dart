@@ -7,7 +7,6 @@ class CartProvider with ChangeNotifier {
   List<CartItem> get cartItems => _cartItems;
 
   void addToCart(dynamic product) {
-    // Vérifie si l'article est déjà dans le panier
     final index = _cartItems.indexWhere((item) => item.product['id'] == product['id']);
     if (index != -1) {
       _cartItems[index].quantity++;
@@ -28,6 +27,6 @@ class CartProvider with ChangeNotifier {
   }
 
   double get totalPrice {
-    return _cartItems.fold(0, (total, item) => total + (item.product['price'] * item.quantity));
+    return _cartItems.fold(0, (total, item) => total + (item.product['price'] * item.quantity * 1.2));
   }
 }

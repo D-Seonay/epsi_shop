@@ -19,7 +19,7 @@ class ProductCard extends StatelessWidget {
           // Image du produit
           Image.network(
             product['image'],
-            height: 400.0, // Augmenter la hauteur de l'image
+            height: 400.0,
             width: double.infinity,
             fit: BoxFit.cover,
             errorBuilder: (context, error, stackTrace) => const Icon(Icons.error),
@@ -36,7 +36,7 @@ class ProductCard extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: Text('\$${product['price']}',
+            child: Text('${product['price']}€',
                 style: const TextStyle(fontSize: 16.0)),
           ),
           const SizedBox(height: 8.0), // Espacement entre le prix et le bouton

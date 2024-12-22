@@ -25,7 +25,7 @@ class CartPage extends StatelessWidget {
                         leading: Image.network(item.product['image'] as String, width: 50),
                         title: Text(item.product['title'] as String),
                         subtitle: Text(
-                          '${item.quantity} x \$${item.product['price'] as double}',
+                          '${item.quantity} x €${item.product['price'] as double}',
                         ),
                         trailing: IconButton(
                           icon: const Icon(Icons.delete),
@@ -40,7 +40,7 @@ class CartPage extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Text(
-                    'Total: \$${cartProvider.totalPrice.toStringAsFixed(2)}',
+                    'Total: \$${cartProvider.totalPrice.toStringAsFixed(2)}€',
                     style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
@@ -51,11 +51,34 @@ class CartPage extends StatelessWidget {
                   onPressed: () {
                     // Logique de commande
                     ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Order Placed!')),
+                      const SnackBar(content: Text('Clearing cart')),
                     );
                     cartProvider.clearCart();
                   },
                   child: const Text('Checkout'),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    cartProvider.clearCart();
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: const Text('Thank you!'),
+                          content: const Text('Thank you for your purchase.'),
+                          actions: <Widget>[
+                            TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                              child: const Text('OK'),
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  },
+                  child: const Text('Clear Cart'),
                 ),
               ],
             ),

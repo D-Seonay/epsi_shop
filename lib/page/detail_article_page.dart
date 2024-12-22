@@ -1,4 +1,6 @@
+import 'package:epsi_shop/providers/cart_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 // import 'package:provider/provider.dart';
 // import '../models/cart_model.dart';
 
@@ -35,12 +37,20 @@ class ProductDetailScreen extends StatelessWidget {
                   fontSize: 24.0,
                 ),
               ),
+              const SizedBox(height: 8.0),
+              Text(
+                '${product['price']} €',
+                style: const TextStyle(
+                  fontSize: 20.0,
+                  color: Colors.grey,
+                ),
+              ),
               const SizedBox(height: 16.0),
               ElevatedButton(
                 onPressed: () {
-                  // Provider.of<CartModel>(context, listen: false).addItem(product);
+                  Provider.of<CartProvider>(context, listen: false).addToCart(product);
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('${product['title']} ajouté au panier')),
+                    const SnackBar(content: Text('Added to Cart')),
                   );
                 },
                 child: const Text('Ajouter au panier'),
