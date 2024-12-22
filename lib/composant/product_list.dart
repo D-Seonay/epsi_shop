@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:provider/provider.dart';
-import '../providers/cart_provider.dart';
 import '../composant/product_card.dart';
 import '../page/detail_article_page.dart';
-import '../composant/navbar.dart';
 
 class ProductListScreen extends StatefulWidget {
   const ProductListScreen({super.key});

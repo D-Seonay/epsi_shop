@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../composant/navbar.dart';
-import '../composant/product_list_screen.dart';
+import '../composant/product_list.dart';
 import '../page/cart_page.dart';
 
 final GoRouter appRouter = GoRouter(
